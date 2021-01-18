@@ -186,7 +186,7 @@ end
 
 def player_stats(name)
   game_hash.each do |key, value|
-    value.each_with_index do |inner_hash, index|
+    value.each do |inner_hash|
       inner_hash[:player_name] = name 
       binding.pry
         if inner_hash[:player_name] == name
