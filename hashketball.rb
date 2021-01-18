@@ -189,6 +189,7 @@ def player_stats(name)
     value.each_with_index do |inner_hash, index|
       inner_hash[:player_name]  
         if inner_hash[:player_name] == name
+          binding.pry
           return inner_hash
         end
       end
