@@ -127,4 +127,70 @@ def game_hash
   }
 end
 
-# Write code here
+require "pry"
+
+def num_points_scored(name)
+  game_hash.each do |key, value|
+    value[:players].each do |inner_hash|
+      if inner_hash[:player_name] == name
+        return inner_hash[:points]
+      end
+    end
+  end
+end
+
+
+def shoe_size(name)
+  game_hash.each do |key, value|
+    value[:players].each do |inner_hash|
+      if inner_hash[:player_name] == name
+        return inner_hash[:shoe]
+      end
+    end
+  end
+end
+
+
+def team_colors(name)
+  colors_array = []
+  game_hash.each do |key, value|
+    if value[:team_name] == name
+      value[:colors].each {|color| colors_array << color}
+    end
+  end
+  return colors_array
+end
+
+
+def team_names
+  name_array = []
+  game_hash.each do |key, value|
+    name_array << value[:team_name]
+  end
+  return name_array
+end
+
+
+def player_numbers(team_names)
+  jersey_array = []
+  game_hash.each do |key, value|
+    if value[:team_name] == team_names
+      value[:players].each do |inner_hash|
+        jersey_array << inner_hash[:number]
+      end
+    end
+  end
+  return jersey_array.sort
+end
+
+
+def player_stats(name)
+  game_hash.each do |key, value|
+    value.each_with_index do |inner_hash, index|
+      inner_hash[:player_name] = name 
+        if inner_hash[:player_name] == name
+          return inner_hash
+        end
+      end
+    end
+end
