@@ -194,6 +194,21 @@ def player_stats(name)
   end
 end
 
+def most_points_scored
+  most_points = 0
+  high_scorer = ""
+  game_hash.each do |key, value|
+    value[:players].each do |inner_hash|
+      if inner_hash[:points] > most_points
+        most_points == inner_hash[:points]
+        high_scorer == inner_hash[:player_name]
+      end
+    end
+  end
+  binding.pry
+  return high_scorer
+end
+
 
 def big_shoe_rebounds
   largest_shoe_size = 0
@@ -210,17 +225,3 @@ def big_shoe_rebounds
 end
 
 
-def most_points_scored
-  most_points = 0
-  high_scorer = ""
-  game_hash.each do |key, value|
-    value[:players].each do |inner_hash|
-      if inner_hash[:points] > most_points
-        most_points == inner_hash[:points]
-        high_scorer == inner_hash[:player_name]
-      end
-    end
-  end
-  binding.pry
-  return high_scorer
-end
